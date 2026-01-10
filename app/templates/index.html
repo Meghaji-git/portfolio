@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Potfolio Website</title>
+    <link rel="stylesheet" href="{% static 'css/static.css' %}">
+    <script src="https://kit.fontawesome.com/874d26ed7c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header">
+        <div id="container">
+            <nav>
+                <img src="{% static 'img/logo.jpeg' %}" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contect</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-list" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <span id="msg">{% for msg in messages %}
+                    {{msg}}
+                    {% endfor %}</span>
+                <p>Python Developer</p>
+                <h1>Hi, I'm <span>Meghaji</span><br> Makvana</h1>
+            </div>
+        </div>
+    </div>
+    <!-- -------about------ -->
+    <div id="about">
+        <div id="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="{% static 'img/mypc.jpeg' %}">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-titel">About Me</h1>
+                    <p>Enthusiastic and detail-oriented Django Developer with a strong foundation in Python, web
+                        development, and database management. Skilled in building responsive and scalable web
+                        applications using Django, HTML, CSS, JavaScript, and RESTful APIs. Passionate about learning
+                        new technologies and contributing to real-world projects that make an impact.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Django Framework</span><br>Models, Views Templates, and Middleware.</li>
+                            <li><span>Database Management</span><br>Proficiency in MySQL.</li>
+                            <li><span>Authentication & Security</span><br>Experience with Django's built-in security.
+                                features (CSRF protection).</li>
+                            <li><span>HTML5 & CSS3</span><br>The building blocks</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>jul2025 - dec2025</span><br>Beck-end Developer at Maxgen Tecnologies</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>mar2017 - mar2020</span><br>B.C.A from h.l.patel collge</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------services----------- -->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-titel">My services</h1>
+            <div class="services-list">
+                {% for i in services %}
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>{{i.domain}}</h2>
+                    <p>{{i.disciption}}</p>
+                    <!-- <a href="#">Learn more</a> -->
+                </div>
+                {% endfor %}
+                <!-- <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>I bridge the gap between design and technology. With a background in UI/UX research and front-end
+                        development, I handle the entire lifecycle of a website. My goal is to create seamless,
+                        responsive interfaces that are as functional as they are beautiful, ensuring your brand looks
+                        its best on any device.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-crop-simple"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>I create digital experiences that are as beautiful as they are functional. Specializing in
+                        high-fidelity UI and interactive prototyping, I focus on the micro-moments that define a brand's
+                        identity. I believe that great design isn't just about how it looks, but how it feels and
+                        responds to the human touch.</p>
+                    <a href="#">Learn more</a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- --------------------------portfolio-------------------------------- -->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-titel">My Work</h1>
+            <div class="work-list">
+                {% for i in projects %}
+                <div class="work">
+                    <img src="{{i.img}}">
+                    <div class="layer">
+                        <h3>{{i.project_name}}</h3>
+                        <p>{{i.disciption}}</p>
+                        <a href="{{i.url}}"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- <div class="work">
+                    <img src="{% static 'img/web.jpeg' %}">
+                    <div class="layer">
+                        <h3>Flexsep E-commerce Website</h3>
+                        <p>Developed a full-stack e-commerce site using Django and SqlLite, featuring user
+                            authentication, product search, and a persistent shopping cart.</p>
+                        <a href="https://github.com/Meghaji-git/FlexStap"><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="{% static 'img/web.jpeg' %}">
+                    <div class="layer">
+                        <h3>quizApp</h3>
+                        <p>Developed a full-stack quiz platform using Django and SqlLite to manage real-time events
+                            and user scoring.</p>
+                        <a href="https://github.com/Meghaji-git/quizApp"><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div> -->
+            </div>
+            <a href="#" class="btn">See More</a>
+        </div>
+    </div>
+    <!-- ------------contact---------- -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-paper-plane"></i>meghmakvana7@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>7226917226</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter-square"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a
+                            href="https://www.linkedin.com/in/meghaji-makvana-12368b395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+                                class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="{% static 'img/cv.pdf' %}" download class="btn btn2">Downlod CV</a>
+                </div>
+                <div class="contact-right">
+                    <form action="{% url 'home' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © Meghaji.</p>
+        </div>
+    </div>
+
+    <script>
+
+        var tablinks = document.getElementsByClassName('tab-links');
+        var tabcontents = document.getElementsByClassName('tab-contents');
+
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link")
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+
+    </script>
+    <script>
+
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu() {
+            sidemenu.style.right = "0"
+        }
+        function closemenu() {
+            sidemenu.style.right = "-200px"
+        }
+
+    </script>
+</body>
+
+</html>
