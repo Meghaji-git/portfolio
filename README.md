@@ -1,0 +1,1 @@
+Using Django’s MTV (Model-Template-View) architecture, I build dynamic web platforms that are both powerful and user-friendly. Whether it’s integrating third-party APIs, managing user authentication, or crafting responsive templates with Bootstrap, I handle the entire lifecycle of a web project with a focus on efficiency and security
